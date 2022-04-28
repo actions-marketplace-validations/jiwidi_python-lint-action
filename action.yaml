@@ -1,5 +1,5 @@
-name: "Python Linter: mypy, autoflake, isort, black"
-description: "Ensure Python code quality. Supports autoflake, black, mypy and isort."
+name: "Python Linter: autoflake, isort, black"
+description: "Ensure Python code quality. Supports autoflake, isort and black"
 branding:
   icon: "underline"
   color: "blue"
