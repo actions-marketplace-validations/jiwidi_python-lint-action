@@ -12,9 +12,6 @@ set -e
 
 echo "===== Running Python Linter - '$2' mode ====="
 
-echo "Running mypy"
-mypy "$1" --show-error-codes --show-error-context --pretty ${3}
-
 echo "Running black"
 if [ "$2" = "high" ]; then
     black "$1" ${5} --check

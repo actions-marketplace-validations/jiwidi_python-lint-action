@@ -22,13 +22,12 @@ Ensure Python code quality. Supports mypy, autoflake, black and isort.
 
 </details>
 
-
 ## Example
 ```yaml
  steps:
  - uses: actions/checkout@v2
  - name: Python Linter
-   uses: jiwidi/python-linter@master
+   uses: jiwidi/python-lint-action@release
    with:
      source: "src"
      mypy-options: "--ignore-missing-imports --show-error-codes"
