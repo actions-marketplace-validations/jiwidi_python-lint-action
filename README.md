@@ -30,7 +30,6 @@ Ensure Python code quality. Supports mypy, autoflake, black and isort.
    uses: jiwidi/python-lint-action@release
    with:
      source: "src"
-     mypy-options: "--ignore-missing-imports --show-error-codes"
      autoflake-options: "--remove-unused-variables"
      pylint-options: "--rcfile=setup.cfg"
      isort-options: "-w 100"

@@ -12,11 +12,7 @@ inputs:
     description: "Set strictness for lint [low, medium, high]"
     required: false
     default: "medium"
-  pylint-options:
-    description: "Pylint options"
-    required: false
-    default: ""
-  black-options:
+  autoflake-options:
     description: "Autoflake options"
     required: false
     default: "--remove-all-unused-imports -i"
@@ -24,6 +20,10 @@ inputs:
     description: "Isort options"
     required: false
     default: "--profile black"
+  black-options:
+    description: "Black options"
+    required: false
+    default: ""
 
 runs:
   using: "Docker"
@@ -32,5 +32,5 @@ runs:
     - ${{ inputs.source }}
     - ${{ inputs.strict }}
     - ${{ inputs.autoflake-options }}
-    - ${{ inputs.black-options }}
     - ${{ inputs.isort-options }}
+    - ${{ inputs.black-options }}
