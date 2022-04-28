@@ -15,7 +15,7 @@ if [ "$2" = "high" ]; then
     echo "Running autoflake"
     autoflake "$1" ${3} -c
     echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${4} -c
+    isort "$1"/**/*.py -m 3 ${4}
     echo "Running black"
     black "$1" ${5} --check
 
@@ -23,7 +23,7 @@ elif [ "$2" = "medium" ]; then
     echo "Running autoflake"
     autoflake "$1" ${3} -c
     echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${4} -c
+    isort "$1"/**/*.py -m 3 ${4}
     echo "Running black"
     black "$1" ${5} --check
 
@@ -31,7 +31,7 @@ else
     echo "Running autoflake"
     autoflake "$1" ${3} -c
     echo "Running isort"
-    isort "$1"/**/*.py -m 3 --trailing-comma ${4} -c
+    isort "$1"/**/*.py -m 3 ${4}
     echo "Running black"
     black "$1" ${5} --check
 fi
