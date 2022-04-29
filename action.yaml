@@ -31,9 +31,13 @@ runs:
         python-version: ${{ matrix.python-version }}
     - name: Install linting libraries
       run: pip install autoflake isort black
+      shell: bash
     - name: Autoflake
       run: autoflake ${{ inputs.source }} ${{ inputs.autoflake-options }}
+      shell: bash
     - name: Isort
       run: isort ${{ inputs.source }} ${{ inputs.isort-options }}
+      shell: bash
     - name: Black
       run: black ${{ inputs.source }} ${{ inputs.black-options }}
+      shell: bash
