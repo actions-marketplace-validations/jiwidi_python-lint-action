@@ -8,14 +8,10 @@ inputs:
     description: "Source file or directory"
     required: false
     default: "."
-  strict:
-    description: "Set strictness for lint [low, medium, high]"
-    required: false
-    default: "medium"
   autoflake-options:
     description: "Autoflake options"
     required: false
-    default: "--remove-all-unused-imports -i"
+    default: "--remove-all-unused-imports -r -c"
   isort-options:
     description: "Isort options"
     required: false
@@ -23,14 +19,21 @@ inputs:
   black-options:
     description: "Black options"
     required: false
-    default: ""
+    default: "--diff --color --check"
 
 runs:
-  using: "Docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.source }}
-    - ${{ inputs.strict }}
-    - ${{ inputs.autoflake-options }}
-    - ${{ inputs.isort-options }}
-    - ${{ inputs.black-options }}
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install linting libraries
+      run: pip install autoflake isort black
+    - name: Autoflake
+      run: autoflake ${{ inputs.source }} ${{ inputs.autoflake-options }}
+    - name: Isort
+      run: isort ${{ inputs.source }} ${{ inputs.isort-options }}
+    - name: Black
+      run: black ${{ inputs.source }} ${{ inputs.black-options }}
