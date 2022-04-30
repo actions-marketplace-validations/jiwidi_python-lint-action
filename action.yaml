@@ -11,7 +11,7 @@ inputs:
   autoflake-options:
     description: "Autoflake options"
     required: false
-    default: "--remove-all-unused-imports --remove-unused-variables --expand-star-imports --ignore-init-module-imports -r -c"
+    default: "--remove-all-unused-imports --remove-unused-variables --expand-star-imports --ignore-init-module-imports -r"
   isort-options:
     description: "Isort options"
     required: false
