@@ -33,7 +33,16 @@ runs:
       run: pip install autoflake isort black
       shell: bash
     - name: Autoflake
-      run: autoflake ${{ inputs.source }} ${{ inputs.autoflake-options }}
+      run: autoflake
+      run: |
+       output="$(autoflake ${{ inputs.source }} ${{ inputs.autoflake-options }})"
+       if [[ -n $output ]]
+       then
+        printf "%s\n" "$output"
+        exit 1
+       else
+        exit 0
+       fi
       shell: bash
     - name: Isort
       run: isort ${{ inputs.source }} ${{ inputs.isort-options }}
