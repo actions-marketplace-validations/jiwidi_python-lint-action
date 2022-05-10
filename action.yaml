@@ -15,11 +15,11 @@ inputs:
   isort-options:
     description: "Isort options"
     required: false
-    default: "--profile black"
+    default: "--profile black --line-length 88"
   black-options:
     description: "Black options"
     required: false
-    default: "--diff --color --check"
+    default: "--diff --color --check --line-length 88"
 
 runs:
   using: "composite"
